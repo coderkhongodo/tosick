@@ -33,11 +33,19 @@ export async function POST(request: NextRequest) {
             })
         }
 
+        const inserted = Array.isArray(data)
+            ? (result && 'insertedIds' in result ? Object.keys(result.insertedIds || {}).length : 0)
+            : 1
+
+        const ids = Array.isArray(data)
+            ? (result && 'insertedIds' in result ? result.insertedIds : {})
+            : (result as any).insertedId
+
         return NextResponse.json({
             success: true,
             collection,
-            inserted: Array.isArray(data) ? result.insertedCount : 1,
-            ids: Array.isArray(data) ? result.insertedIds : result.insertedId
+            inserted,
+            ids
         })
 
     } catch (error) {
