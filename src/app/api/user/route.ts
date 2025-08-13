@@ -68,9 +68,9 @@ export async function POST(request: NextRequest) {
                             loginAt: new Date(),
                             provider,
                             ip: request.headers.get('x-forwarded-for') || 'unknown'
-                        } as any
+                        }
                     }
-                },
+                } as any,
                 { returnDocument: 'after' }
             )
             return NextResponse.json({ user: updatedUser.value })
