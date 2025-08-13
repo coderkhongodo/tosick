@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 
         if (existingUser) {
             // Update existing user and add login history
-            const updatedUser = await users.findOneAndUpdate(
+            await users.updateOne(
                 { uid },
                 {
                     $set: {
@@ -70,10 +70,12 @@ export async function POST(request: NextRequest) {
                             ip: request.headers.get('x-forwarded-for') || 'unknown'
                         }
                     }
-                } as any,
-                { returnDocument: 'after' }
+                }
             )
-            return NextResponse.json({ user: updatedUser.value })
+            
+            // Fetch updated user
+            const updatedUser = await users.findOne({ uid })
+            return NextResponse.json({ user: updatedUser })
         } else {
             // Create new user
             const newUser = {
