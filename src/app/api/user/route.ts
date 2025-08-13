@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
                             loginAt: new Date(),
                             provider,
                             ip: request.headers.get('x-forwarded-for') || 'unknown'
-                        }
+                        } as any
                     }
                 },
                 { returnDocument: 'after' }
