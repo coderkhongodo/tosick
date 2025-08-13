@@ -1,0 +1,64 @@
+# LOCAL GITIGNORE - Admin panel completely hidden
+# This file should be copied to .gitignore for local development
+
+# Admin panel - COMPLETELY HIDDEN
+src/app/admin/
+src/app/api/admin/
+src/middleware.ts
+
+# Admin credentials
+.env.local
+.env.development.local
+
+# Admin documentation
+ADMIN_SETUP.md
+admin-setup.md
+admin-guide.md
+
+# Admin configuration
+admin-config.json
+admin-credentials.json
+admin-keys.json
+
+# Firebase admin
+firebase-admin-key.json
+firebase-secrets.json
+
+# MongoDB admin
+mongodb-credentials.json
+mongodb-keys.json
+
+# Secrets and tokens
+secrets.json
+tokens.json
+credentials.json
+
+# Local database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache and build
+.next/
+build/
+dist/
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env*.local
+
+# Logs
+*.log
+logs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
